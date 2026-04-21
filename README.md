@@ -1,6 +1,6 @@
-# Thinking Skills for Cursor
+# Thinking Skills
 
-Three Socratic dialogue skills for AI-assisted decision-making and analysis. Built for [Cursor](https://cursor.com) Agent Skills.
+Three Socratic dialogue skills for AI-assisted decision-making and analysis. Works with [Cursor](https://cursor.com) and [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Both tools follow the [Agent Skills](https://agentskills.io/) open standard, so the same SKILL.md files work in either.
 
 These skills turn your AI assistant into a sparring partner that challenges your thinking through structured back-and-forth, then helps you produce clean artifacts. They don't summarize, don't lecture, and don't decide for you.
 
@@ -26,6 +26,8 @@ Guide a tricky decision through dialogue, then produce a structured decision doc
 
 ## Installation
 
+### Cursor
+
 1. Copy the skill folders into `.cursor/skills/` in any project:
 
 ```
@@ -36,14 +38,40 @@ your-project/
         absorb/SKILL.md
         harden/SKILL.md
         choose/SKILL.md
-      ...
 ```
 
-2. Copy the `templates/` folder somewhere in your project. The skills reference these when producing artifacts:
+2. Copy `templates/` somewhere in your project. The skills reference these when producing artifacts:
    - `decision-doc.md` -- used by `choose` and `harden` when structuring decisions
    - `insights.md` -- used by `absorb` when externalizing findings from research or analysis
 
-3. That's it. The skills will show up in Cursor's agent skills and activate on the trigger phrases above.
+3. The skills will show up in Cursor's agent skills and activate on the trigger phrases above.
+
+### Claude Code
+
+1. Copy the skill folders into `.claude/skills/` -- either project-level or personal (global):
+
+```
+# Project-level (this project only)
+your-project/
+  .claude/
+    skills/
+      absorb/SKILL.md
+      harden/SKILL.md
+      choose/SKILL.md
+
+# Personal (available across all your projects)
+~/.claude/
+  skills/
+    absorb/SKILL.md
+    harden/SKILL.md
+    choose/SKILL.md
+```
+
+2. Copy `templates/` somewhere in your project (same as Cursor).
+
+3. Once installed, you can invoke skills directly with `/absorb`, `/harden`, `/choose`, or Claude will load them automatically when it detects a matching trigger phrase.
+
+> **Note:** Older Claude Code versions use `.claude/commands/` instead of `.claude/skills/`. Both paths still work. If you're on an older version, place the SKILL.md files in `.claude/commands/` instead.
 
 ## Making These Even Better
 
